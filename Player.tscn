@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcnwunysw53d0"]
+
+[ext_resource type="Script" uid="uid://hd7r1scgu6mu" path="res://Player.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://5jfvq7uvh0p8" path="res://Sound Effects/Pew.mp3" id="2_kpjcp"]
+
+[sub_resource type="CapsuleShape3D" id="2"]
+radius = 0.65665
+height = 2.76552
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xhfnw"]
+radius = 0.595
+height = 3.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546298, -0.730814)
+current = true
+fov = 90.656
+
+[node name="LaserSpawnPoint" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.43494)
+
+[node name="FireSoundPlayer" type="AudioStreamPlayer3D" parent="Camera3D"]
+stream = ExtResource("2_kpjcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_xhfnw")

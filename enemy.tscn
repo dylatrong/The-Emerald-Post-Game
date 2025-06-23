@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2d15t45dqwp0"]
+
+[ext_resource type="Script" uid="uid://dm6ysnknov05a" path="res://Enemy.gd" id="1_7k104"]
+[ext_resource type="AudioStream" uid="uid://dapdbw3qlljce" path="res://Sound Effects/I_died.mp3" id="2_4gyqm"]
+[ext_resource type="AudioStream" uid="uid://xjwqq85m3s6d" path="res://Sound Effects/Ouch.mp3" id="2_qi2p4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qi2p4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iifgy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_epg4t"]
+size = Vector3(1.36768, 1.53223, 1.03015)
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(0.0225478, 0, 0.999746, 0, 1, 0, -0.999746, 0, 0.0225478, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_7k104")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4gyqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qi2p4")
+
+[node name="Knife" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.20579, -0.077327, 0, 0.892234, 0.104501, 0, 0, 0, 0.05, 0.194522, 0.163032, 0.466984)
+mesh = SubResource("BoxMesh_iifgy")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183838, 0.0620117, 0.0150757)
+shape = SubResource("BoxShape3D_epg4t")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qi2p4")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_4gyqm")

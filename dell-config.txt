@@ -1,0 +1,11 @@
+[Interface] 
+Address = 10.7.0.3/24 
+DNS = 1.1.1.1, 1.0.0.1 
+PrivateKey = WKP5aq6I5hB2/Op9+toA7YzDxbwb+m613l2TpiGH+0k= 
+
+[Peer] 
+PublicKey = woujcNygJjUMR+SuwBdPngUZeB4QLKRlav1gbiZcOWU= 
+PresharedKey = 0XcxoTrB/EryCXOQdKNk620/EfJHF12OIXqT5FWHdvA= 
+AllowedIPs = 0.0.0.0/0, ::/0 
+Endpoint = 3.21.154.222:51820 
+PersistentKeepalive = 25

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctxa2niw281qv"
+path="res://.godot/imported/064-laser-thum_hYpSdXS.mp3-024ef0892102123dd76cfd6d4a77c7da.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/064-laser-thum_hYpSdXS.mp3"
+dest_files=["res://.godot/imported/064-laser-thum_hYpSdXS.mp3-024ef0892102123dd76cfd6d4a77c7da.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
