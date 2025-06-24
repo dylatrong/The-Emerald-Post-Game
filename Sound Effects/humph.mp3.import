@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btthcp113hduu"
+path="res://.godot/imported/humph.mp3-15840176382a2fc15eefb3070a3a9cc2.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/humph.mp3"
+dest_files=["res://.godot/imported/humph.mp3-15840176382a2fc15eefb3070a3a9cc2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

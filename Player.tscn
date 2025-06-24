@@ -1,7 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcnwunysw53d0"]
+[gd_scene load_steps=12 format=3 uid="uid://dcnwunysw53d0"]
 
 [ext_resource type="Script" uid="uid://hd7r1scgu6mu" path="res://Player.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://5jfvq7uvh0p8" path="res://Sound Effects/Pew.mp3" id="2_kpjcp"]
+[ext_resource type="Script" uid="uid://c4lanrg8yqlxo" path="res://HealthBar3D.gd" id="3_e80uo"]
+[ext_resource type="AudioStream" uid="uid://btthcp113hduu" path="res://Sound Effects/humph.mp3" id="3_kne1u"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kne1u"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.3
+
+[sub_resource type="TorusMesh" id="TorusMesh_kne1u"]
+inner_radius = 0.005
+outer_radius = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e80uo"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kne1u"]
+size = Vector3(1, 0.05, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kne1u"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="2"]
 radius = 0.65665
@@ -11,7 +34,7 @@ height = 2.76552
 radius = 0.595
 height = 3.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -25,8 +48,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.43494)
 [node name="FireSoundPlayer" type="AudioStreamPlayer3D" parent="Camera3D"]
 stream = ExtResource("2_kpjcp")
 
+[node name="GunMesh" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.977487, 0.183088, 0.104876, -0.15633, 0.294607, 0.942745, 0.141708, -0.937916, 0.316596, -0.484333, -0.192623, -0.276916)
+mesh = SubResource("CylinderMesh_kne1u")
+
+[node name="Crosshair" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.896493)
+mesh = SubResource("TorusMesh_kne1u")
+skeleton = NodePath("../GunMesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_e80uo")
+
+[node name="HealthBar" type="Node3D" parent="Camera3D"]
+
+[node name="BarMesh" type="MeshInstance3D" parent="Camera3D/HealthBar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628734, -0.735559)
+mesh = SubResource("BoxMesh_kne1u")
+surface_material_override/0 = SubResource("StandardMaterial3D_kne1u")
+script = ExtResource("3_e80uo")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_xhfnw")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_kne1u")

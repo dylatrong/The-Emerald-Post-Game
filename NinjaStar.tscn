@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyk8c606afekx"]
+
+[ext_resource type="Script" uid="uid://dau3o1nflnyj8" path="res://NinjaStar.gd" id="1_n3fqn"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_cijvt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jorvf"]
+height = 0.438
+radius = 1.0
+
+[node name="NinjaStar" type="Area3D"]
+script = ExtResource("1_n3fqn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_cijvt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_jorvf")
+
+[node name="Timer" type="Timer" parent="."]

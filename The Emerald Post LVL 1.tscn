@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvb4etdhl1pag"]
+[gd_scene load_steps=7 format=3 uid="uid://cvb4etdhl1pag"]
 
 [ext_resource type="PackedScene" uid="uid://dcnwunysw53d0" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://djcpmgign55nr" path="res://the_emerald_post_lvl_1.gd" id="1_cvmvu"]
-[ext_resource type="PackedScene" uid="uid://d2d15t45dqwp0" path="res://enemy.tscn" id="2_ksd6g"]
+[ext_resource type="PackedScene" uid="uid://d2d15t45dqwp0" path="res://Enemy.tscn" id="2_ksd6g"]
+[ext_resource type="PackedScene" uid="uid://sc7wi5w05tub" path="res://Ninja.tscn" id="3_b4cpa"]
 [ext_resource type="PackedScene" uid="uid://hctuc043yu3p" path="res://LaserBolt.tscn" id="4_1el07"]
 
 [sub_resource type="Environment" id="Environment_ul3nr"]
@@ -22,14 +23,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39257, 3.05702, 83.2969)
 [node name="Enemy3" parent="." groups=["enemies"] instance=ExtResource("2_ksd6g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5862, 6.11403, 118.322)
 
-[node name="Enemy4" parent="." groups=["enemies"] instance=ExtResource("2_ksd6g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5267, 6.11403, 106.24)
+[node name="Ninja" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
+transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, 0, 4.86012, 71.8334)
 
-[node name="Enemy5" parent="." groups=["enemies"] instance=ExtResource("2_ksd6g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5862, 6.11403, 80.4518)
+[node name="Ninja2" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
+transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, -3.92952, 4.86012, 71.8334)
 
-[node name="Enemy6" parent="." groups=["enemies"] instance=ExtResource("2_ksd6g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87357, 6.11403, 106.24)
+[node name="Ninja3" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
+transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, -9.38963, 4.86012, 71.8334)
+
+[node name="Ninja4" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
+transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, -13.2292, 4.86012, 71.8334)
+
+[node name="Ninja5" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
+transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, -16.5544, 4.86012, 71.8334)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 transform = Transform3D(-0.997487, 0, 0.0708533, 0, 1, 0, -0.0708533, 0, -0.997487, 0, 3.3769, 0)
@@ -40,6 +47,8 @@ environment = SubResource("Environment_ul3nr")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="WorldEnvironment"]
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="Chamber 1" type="CSGCylinder3D" parent="WorldEnvironment/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.6165, 0)
