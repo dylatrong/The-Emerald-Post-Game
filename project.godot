@@ -20,10 +20,6 @@ run/main_scene="uid://cvb4etdhl1pag"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg")
-
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
