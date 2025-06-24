@@ -1,14 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2d15t45dqwp0"]
+[gd_scene load_steps=8 format=3 uid="uid://d2d15t45dqwp0"]
 
 [ext_resource type="Script" uid="uid://dm6ysnknov05a" path="res://Enemy.gd" id="1_7k104"]
 [ext_resource type="AudioStream" uid="uid://dapdbw3qlljce" path="res://Sound Effects/I_died.mp3" id="2_4gyqm"]
 [ext_resource type="AudioStream" uid="uid://xjwqq85m3s6d" path="res://Sound Effects/Ouch.mp3" id="2_qi2p4"]
+[ext_resource type="PackedScene" uid="uid://q7530qxn3e2d" path="res://Melee_Enemy.tscn" id="4_e6d4v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_qi2p4"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_iifgy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_epg4t"]
 size = Vector3(1.36768, 1.53223, 1.03015)
@@ -24,13 +21,6 @@ script = ExtResource("1_7k104")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_4gyqm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_qi2p4")
-
-[node name="Knife" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0180981, -0.00116064, 0.0499944, 0.892234, 0.104501, 2.70209e-10, -1.20565, 0.0773183, 0.000750459, 0.492056, 0.163032, -0.0846879)
-mesh = SubResource("BoxMesh_iifgy")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16161, 0, 0.00364487)
@@ -55,6 +45,9 @@ shape = SubResource("SphereShape3D_qi2p4")
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Melee_Enemy" parent="." instance=ExtResource("4_e6d4v")]
+transform = Transform3D(-0.36, 0, -3.14722e-08, 0, 0.36, 0, 3.14722e-08, 0, -0.36, 0, -1.005, 0)
 
 [connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
 [connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]

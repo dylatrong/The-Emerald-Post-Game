@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # --- STATE MACHINE ---
-enum State {IDLE, CHASING}
+enum State {IDLE, CHASING, ATTACKING, DYING}
 var current_state = State.IDLE
 
 # --- Movement & Health ---
@@ -13,14 +13,13 @@ var current_state = State.IDLE
 @onready var vision_area = $VisionArea
 @onready var raycast = $RayCast3D
 @onready var collision_shape = $CollisionShape3D
-@onready var mesh = $MeshInstance3D
-# --- NEW: Add reference to attack cooldown timer ---
+@onready var animation_player = $Melee_Enemy/AnimationPlayer
 @onready var attack_cooldown_timer = $AttackCooldownTimer
-# Add sound players if they exist in this scene
 @onready var hit_sound_player = $HitSoundPlayer if has_node("HitSoundPlayer") else null
 @onready var death_sound_player = $DeathSoundPlayer if has_node("DeathSoundPlayer") else null
+@onready var model = $Melee_Enemy
 
-# --- NEW: Cooldown flag ---
+# --- Cooldown flag ---
 var can_attack = true
 
 var player_in_area = false
@@ -29,20 +28,29 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
-	# Connect the timer's timeout signal in the editor
-	pass
+	# CORRECTED: Use capitalized animation name
+	animation_player.play("Idle")
+
 
 func _physics_process(delta):
+	if current_state == State.DYING:
+		return
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
 	match current_state:
 		State.IDLE:
+			# CORRECTED: Use capitalized animation name
+			animation_player.play("Idle")
 			velocity.x = 0
 			velocity.z = 0
 			if can_see_player():
 				current_state = State.CHASING
 		State.CHASING:
+			# CORRECTED: Use capitalized animation name
+			animation_player.play("Run")
+			
 			if not can_see_player():
 				current_state = State.IDLE
 				return
@@ -51,27 +59,26 @@ func _physics_process(delta):
 			velocity.x = direction_to_player.x * speed
 			velocity.z = direction_to_player.z * speed
 			look_at(Vector3(player_ref.global_transform.origin.x, global_transform.origin.y, player_ref.global_transform.origin.z))
+		
+		State.ATTACKING:
+			# CORRECTED: Use capitalized animation name ("Fight")
+			animation_player.play("Fight")
+			velocity = Vector3.ZERO
 
 	move_and_slide()
 	
-	# --- NEW: Check for melee collision after moving ---
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
-		# Check if we collided with a body that has a take_damage function and we can attack
 		if collision.get_collider().has_method("take_damage") and can_attack:
-			# Check if the body is the player
 			if collision.get_collider().is_in_group("player"):
-				# Deal damage, disable attacking, and start the cooldown
+				current_state = State.ATTACKING
 				collision.get_collider().take_damage(melee_damage)
 				can_attack = false
 				attack_cooldown_timer.start()
 
 
-# --- THIS SECTION IS NOW COMPLETE ---
-
 func take_damage(amount: int):
-	# Don't take damage if already dying
-	if health <= 0:
+	if current_state == State.DYING:
 		return
 
 	health -= amount
@@ -80,29 +87,29 @@ func take_damage(amount: int):
 	if health <= 0:
 		die()
 	else:
-		# If we have a hit sound player, play the sound
 		if hit_sound_player:
 			hit_sound_player.play()
 
 func die():
-	# Stop moving
-	velocity = Vector3.ZERO
-	# Disable collision so it doesn't block anything
-	collision_shape.disabled = true
-	# Hide the mesh
-	mesh.hide()
-	$Knife.hide()
+	current_state = State.DYING
 	
-	# If we have a death sound player, play the sound and wait for it to finish
+	# --- CORRECTED: Logic for when there is NO death animation ---
+	# We will comment out the animation code for now.
+	# When you add a "Death" animation, you can uncomment these lines.
+	# animation_player.play("Death")
+	# await animation_player.animation_finished
+	
+	velocity = Vector3.ZERO
+	collision_shape.disabled = true
+	model.hide()
+	
 	if death_sound_player:
 		death_sound_player.play()
+		# We can still wait for the sound to finish before disappearing
 		await death_sound_player.finished
 	
-	# Safely delete the enemy
 	queue_free()
 
-
-# --- The rest of your functions are correct ---
 
 func can_see_player():
 	if not player_in_area or not is_instance_valid(player_ref):
@@ -124,6 +131,9 @@ func _on_vision_area_body_exited(body):
 		player_ref = null
 		current_state = State.IDLE
 
-# --- NEW: Function to re-enable attacking after cooldown ---
 func _on_attack_cooldown_timer_timeout():
 	can_attack = true
+	if player_in_area:
+		current_state = State.CHASING
+	else:
+		current_state = State.IDLE
