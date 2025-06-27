@@ -5,7 +5,7 @@ enum State {IDLE, CHASING, ATTACKING, DYING}
 var current_state = State.IDLE
 
 # --- Movement & Health ---
-@export var speed = 3.0
+@export var speed = 6.0
 @export var health = 5
 @export var melee_damage = 1
 

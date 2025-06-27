@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d2d15t45dqwp0"]
 
-[ext_resource type="Script" uid="uid://dm6ysnknov05a" path="res://Enemy.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://dxabufwj7fe48" path="res://Scripts/Enemy.gd" id="1_e6d4v"]
 [ext_resource type="AudioStream" uid="uid://dapdbw3qlljce" path="res://Sound Effects/I_died.mp3" id="2_4gyqm"]
 [ext_resource type="AudioStream" uid="uid://xjwqq85m3s6d" path="res://Sound Effects/Ouch.mp3" id="2_qi2p4"]
 [ext_resource type="PackedScene" uid="uid://q7530qxn3e2d" path="res://Melee_Enemy.tscn" id="4_e6d4v"]
@@ -17,7 +17,7 @@ radius = 3.68455
 transform = Transform3D(0.0225478, 0, 0.999746, 0, 1, 0, -0.999746, 0, 0.0225478, 0, 0, 0)
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_7k104")
+script = ExtResource("1_e6d4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_4gyqm")

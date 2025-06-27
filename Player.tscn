@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dcnwunysw53d0"]
 
-[ext_resource type="Script" uid="uid://hd7r1scgu6mu" path="res://Player.gd" id="1"]
+[ext_resource type="Script" uid="uid://0v13usitq8gi" path="res://Scripts/Player.gd" id="1_e80uo"]
 [ext_resource type="AudioStream" uid="uid://5jfvq7uvh0p8" path="res://Sound Effects/Pew.mp3" id="2_kpjcp"]
-[ext_resource type="Script" uid="uid://c4lanrg8yqlxo" path="res://HealthBar3D.gd" id="3_e80uo"]
+[ext_resource type="Script" uid="uid://dt8h8q8wv0kgs" path="res://Scripts/HealthBar3D.gd" id="3_e80uo"]
 [ext_resource type="AudioStream" uid="uid://btthcp113hduu" path="res://Sound Effects/humph.mp3" id="3_kne1u"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kne1u"]
@@ -35,7 +35,7 @@ radius = 0.595
 height = 3.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-script = ExtResource("1")
+script = ExtResource("1_e80uo")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546298, -0.730814)

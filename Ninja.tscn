@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://sc7wi5w05tub"]
+[gd_scene load_steps=9 format=3 uid="uid://sc7wi5w05tub"]
 
-[ext_resource type="Script" uid="uid://cvd6kfu2tirhr" path="res://Ninja.gd" id="1_jrjp1"]
-[ext_resource type="PackedScene" uid="uid://dyk8c606afekx" path="res://NinjaStar.tscn" id="2_4bvku"]
+[ext_resource type="Script" uid="uid://dn5d2i6ner14n" path="res://Scripts/Ninja.gd" id="1_jrjp1"]
 [ext_resource type="AudioStream" uid="uid://xjwqq85m3s6d" path="res://Sound Effects/Ouch.mp3" id="2_32v62"]
 [ext_resource type="AudioStream" uid="uid://dapdbw3qlljce" path="res://Sound Effects/I_died.mp3" id="3_4bvku"]
 
@@ -22,7 +21,6 @@ transform = Transform3D(0.0225478, 0, 0.999746, 0, 1, 0, -0.999746, 0, 0.0225478
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jrjp1")
-ninja_star_scene = ExtResource("2_4bvku")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_4gyqm")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyk8c606afekx"]
 
-[ext_resource type="Script" uid="uid://dau3o1nflnyj8" path="res://NinjaStar.gd" id="1_n3fqn"]
+[ext_resource type="Script" uid="uid://bnnjv2gtusqx8" path="res://Scripts/NinjaStar.gd" id="1_n3fqn"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_cijvt"]
 

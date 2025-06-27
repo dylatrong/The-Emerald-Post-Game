@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://hctuc043yu3p"]
 
-[ext_resource type="Script" uid="uid://djx0uycuhket" path="res://LaserBolt.gd" id="1_xxv3r"]
+[ext_resource type="Script" uid="uid://cavm06wt5f0mc" path="res://Scripts/LaserBolt.gd" id="1_xxv3r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uc2uf"]
 
@@ -17,7 +17,6 @@ emission_on_uv2 = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_xxv3r")
-speed = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
