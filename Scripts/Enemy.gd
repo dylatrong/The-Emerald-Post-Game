@@ -28,7 +28,6 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
-	# CORRECTED: Use capitalized animation name
 	animation_player.play("Idle")
 
 
@@ -41,14 +40,12 @@ func _physics_process(delta):
 
 	match current_state:
 		State.IDLE:
-			# CORRECTED: Use capitalized animation name
 			animation_player.play("Idle")
 			velocity.x = 0
 			velocity.z = 0
 			if can_see_player():
 				current_state = State.CHASING
 		State.CHASING:
-			# CORRECTED: Use capitalized animation name
 			animation_player.play("Run")
 			
 			if not can_see_player():
@@ -61,7 +58,6 @@ func _physics_process(delta):
 			look_at(Vector3(player_ref.global_transform.origin.x, global_transform.origin.y, player_ref.global_transform.origin.z))
 		
 		State.ATTACKING:
-			# CORRECTED: Use capitalized animation name ("Fight")
 			animation_player.play("Fight")
 			velocity = Vector3.ZERO
 
@@ -93,9 +89,8 @@ func take_damage(amount: int):
 func die():
 	current_state = State.DYING
 	
-	# --- CORRECTED: Logic for when there is NO death animation ---
-	# We will comment out the animation code for now.
-	# When you add a "Death" animation, you can uncomment these lines.
+	# --- Current: Logic for when there is NO death animation ---
+	# When adding a "Death" animation, uncomment these lines.
 	# animation_player.play("Death")
 	# await animation_player.animation_finished
 	
@@ -105,7 +100,7 @@ func die():
 	
 	if death_sound_player:
 		death_sound_player.play()
-		# We can still wait for the sound to finish before disappearing
+		# Wait for the sound to finish before disappearing
 		await death_sound_player.finished
 	
 	queue_free()

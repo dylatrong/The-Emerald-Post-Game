@@ -18,6 +18,7 @@ func _ready():
 
 
 func _on_player_died():
+	# I know this function is currenlty a little broken, it is not a huge priortiy to fix this right now - Dylan (6/29/2025)
 	print("Level manager detected player death. Resetting enemies.")
 	
 	# Get all current enemies and delete them

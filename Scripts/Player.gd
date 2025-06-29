@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-# --- NEW: Health and Shooting ---
+# --- Health and Shooting ---
 signal player_died
 signal health_changed(new_health)
 
@@ -9,28 +9,28 @@ signal health_changed(new_health)
 var current_health: int
 var start_position: Vector3
 
-# --- EXISTING: Player movement variables ---
+# --- Player movement variables ---
 @export var speed = 7.0
 @export var jump_strength = 20.0 # Using the Godot 4-adjusted value
 @export var sprint_multiplier := 2.5
 
-# --- EXISTING: Jump tolerance features ---
+# --- Jump tolerance features ---
 @export var jump_buffer_time := 0.15
 @export var coyote_time := 0.15
 var jump_buffer_timer := 0.0
 var coyote_timer := 0.0
 
-# --- NEW: Double Jump ---
+# --- Double Jump ---
 @export var max_air_jumps = 1 # Set to 1 for a double jump, 2 for a triple, etc.
 var air_jumps_left = 0
 
-# --- EXISTING: Hover system ---
+# --- Hover system ---
 @export var hover_max_time = 10.0
 @export var hover_velocity_threshold = 0.5
 var is_hovering = false
 var hover_timer = 0.0
 
-# --- EXISTING: Mouse look variables ---
+# --- Mouse look variables ---
 @export var mouse_sensitivity = 0.002 # Radians/pixel
 
 # --- Node references ---
@@ -45,13 +45,13 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
-	# NEW: Initialize health and starting position
+	# Initialize health and starting position
 	start_position = global_transform.origin
 	current_health = max_health
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-	# --- NEW LINE: Connect health signal to the 3D health bar's update function ---
+	# Connect health signal to the 3D health bar's update function ---
 	health_changed.connect(health_bar_mesh.update_health.bind(max_health))
 	
 	# Announce starting health to update the bar immediately
@@ -59,26 +59,24 @@ func _ready():
 
 
 func _unhandled_input(event: InputEvent):
-	# NEW: Shooting logic
+	# Shooting logic
 	# Use _unhandled_input so it doesn't interfere with other UI
 	if event.is_action_pressed("fire"): # Add "fire" to your Input Map
 		shoot()
 
 func _input(event: InputEvent):
-	# EXISTING: Mouse look logic
+	# Mouse look logic
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta: float):
-	# --- THIS IS YOUR FULL MOVEMENT CODE, NOW RESTORED ---
-
 	# Apply gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
-	# --- UPDATED: Update coyote timer and reset air jumps on the ground ---
+	# Update coyote timer and reset air jumps on the ground ---
 	if is_on_floor():
 		coyote_timer = coyote_time
 		air_jumps_left = max_air_jumps # Reset double jump counter
@@ -91,7 +89,7 @@ func _physics_process(delta: float):
 	else:
 		jump_buffer_timer -= delta
 		
-	# --- UPDATED: Jump Handling Logic ---
+	# Jump Handling Logic ---
 	# Check if the player wants to jump (based on the buffer)
 	if jump_buffer_timer > 0:
 		# First, try to use a ground jump (which benefits from coyote time)
@@ -155,7 +153,7 @@ func shoot():
 	get_tree().get_root().add_child(new_laser)
 	new_laser.global_transform = laser_spawn_point.global_transform
 
-# --- UPDATED: take_damage now plays a sound ---
+# take_damage plays a sound ---
 func take_damage(amount: int):
 	# Don't take damage if already dead
 	if current_health <= 0:

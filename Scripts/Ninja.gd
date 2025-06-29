@@ -14,7 +14,7 @@ var current_state = State.IDLE
 @onready var attack_timer = $AttackTimer
 @onready var vision_area = $VisionArea
 @onready var raycast = $RayCast3D
-# --- NEW: References for sounds ---
+# --- References for sounds ---
 @onready var hit_sound_player = $HitSoundPlayer
 @onready var death_sound_player = $DeathSoundPlayer
 
@@ -31,8 +31,6 @@ func _ready():
 	state_timer.start()
 
 func _physics_process(delta):
-	# (All your state machine and movement logic from before is correct and goes here)
-	# ...
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -64,9 +62,6 @@ func _physics_process(delta):
 			velocity.z = 0
 
 	move_and_slide()
-
-
-# --- THIS SECTION IS NOW FILLED IN ---
 
 func take_damage(amount: int):
 	# Don't do anything if we're already in the process of dying
@@ -103,9 +98,6 @@ func die():
 	
 	# Now that the sound is done, safely delete the enemy node
 	queue_free()
-
-
-# --- The rest of your functions remain the same ---
 
 func transition_to_state(new_state):
 	if current_state == new_state:
