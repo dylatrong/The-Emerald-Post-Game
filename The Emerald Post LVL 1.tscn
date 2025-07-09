@@ -17,8 +17,14 @@ transform = Transform3D(-0.00513786, 0.145896, 0.989287, 0.103758, -0.983882, 0.
 [node name="Enemy" parent="." groups=["enemies"] instance=ExtResource("2_ksd6g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -355.901, 3.05702, 165.665)
 
+[node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("2_ksd6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1364, 18.5487, 165.665)
+
 [node name="Ninja" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
 transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, -260.574, 9.83218, 230.468)
+
+[node name="Ninja2" parent="." groups=["enemies"] instance=ExtResource("3_b4cpa")]
+transform = Transform3D(-0.0933264, 0, -0.995636, 0, 1, 0, 0.995636, 0, -0.0933264, -15.2019, 12.4375, 140.17)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.77242, 0)

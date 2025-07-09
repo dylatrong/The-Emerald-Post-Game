@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://l51ok4qlslel"
+path="res://.godot/imported/windturbine_tall_fan.obj-2a585acc28ac1b8f00248d104ba4a439.mesh"
+
+[deps]
+
+files=["res://.godot/imported/windturbine_tall_fan.obj-2a585acc28ac1b8f00248d104ba4a439.mesh"]
+
+source_file="res://Assets/KayKit_Space_Base_Bits_1.0_FREE/Assets/obj/windturbine_tall_fan.obj"
+dest_files=["res://.godot/imported/windturbine_tall_fan.obj-2a585acc28ac1b8f00248d104ba4a439.mesh", "res://.godot/imported/windturbine_tall_fan.obj-2a585acc28ac1b8f00248d104ba4a439.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
