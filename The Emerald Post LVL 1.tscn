@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvb4etdhl1pag"]
+[gd_scene load_steps=9 format=3 uid="uid://cvb4etdhl1pag"]
 
 [ext_resource type="PackedScene" uid="uid://dcnwunysw53d0" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://cr5xial035nco" path="res://Scripts/the_emerald_post_lvl_1.gd" id="1_b4cpa"]
 [ext_resource type="PackedScene" uid="uid://d2d15t45dqwp0" path="res://Enemy.tscn" id="2_ksd6g"]
 [ext_resource type="PackedScene" uid="uid://sc7wi5w05tub" path="res://Ninja.tscn" id="3_b4cpa"]
 [ext_resource type="PackedScene" uid="uid://hctuc043yu3p" path="res://LaserBolt.tscn" id="4_1el07"]
+[ext_resource type="PackedScene" uid="uid://cibsmqiveoak8" path="res://Assets/KayKit_Space_Base_Bits_1.0_FREE/Assets/fbx/rocks_A.fbx" id="6_ksd6g"]
+[ext_resource type="PackedScene" uid="uid://b8s2rx7f457p7" path="res://Assets/KayKit_Space_Base_Bits_1.0_FREE/Assets/fbx/rocks_B.fbx" id="7_1el07"]
 
 [sub_resource type="Environment" id="Environment_ul3nr"]
 
@@ -38,6 +40,36 @@ use_collision = true
 collision_layer = 3
 collision_mask = 3
 
+[node name="rocks_A" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("6_ksd6g")]
+transform = Transform3D(16.358, -2.43582, -3.79008, 0.919998, 43.3101, -0.213159, 3.79607, -8.11641e-08, 16.3839, 50.6917, 1.85197, 3.33018)
+
+[node name="rocks_A3" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("6_ksd6g")]
+transform = Transform3D(16.219, -2.41512, -3.75788, 0.91218, 42.9421, -0.211348, 3.76382, -8.04745e-08, 16.2447, 22.6999, 1.85197, 44.2937)
+
+[node name="rocks_A2" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("6_ksd6g")]
+transform = Transform3D(-4.66477, 1.18321, 16.0027, 0.91218, 42.9421, -0.211348, -15.9832, 2.10543, -4.6825, 36.6438, 1.85197, 30.711)
+
+[node name="rocks_B" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("7_1el07")]
+transform = Transform3D(14.7281, -8.3472, 0, 5.81908, 21.1268, 0, 0, 0, 15.091, 48.5732, 3.26766, -18.2332)
+
+[node name="rocks_B2" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("7_1el07")]
+transform = Transform3D(14.7281, -8.3472, 0, 5.81908, 21.1268, 0, 0, 0, 15.091, 42.9537, -1.20723, 20.5744)
+
+[node name="rocks_A4" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("6_ksd6g")]
+transform = Transform3D(-23.2546, 2.27475, 6.50226, 1.43074, 41.6852, -0.181364, -11.8841, 0.567329, -12.7454, -45.0502, 0.150371, 20.5411)
+
+[node name="rocks_A5" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("6_ksd6g")]
+transform = Transform3D(-15.0931, 1.9021, -7.05051, 0.91218, 42.9421, -0.211348, 7.03004, -1.48823, -15.1096, -48.2466, 0.150371, -28.9698)
+
+[node name="rocks_A6" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("6_ksd6g")]
+transform = Transform3D(16.1443, -2.66139, -11.6017, 1.089, 51.2662, -0.252317, 11.5965, -1.10919, 16.1752, -47.6727, 0.150371, -8.76965)
+
+[node name="rocks_B3" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("7_1el07")]
+transform = Transform3D(-11.5996, 6.5741, -9.29925, 5.81908, 21.1268, -1.60036e-07, 9.07563, -5.14364, -11.8854, -30.0941, 1.56607, 36.2186)
+
+[node name="rocks_B4" parent="WorldEnvironment/CSGCombiner3D" instance=ExtResource("7_1el07")]
+transform = Transform3D(-11.5996, 6.5741, -9.29925, 5.81908, 21.1268, -1.60036e-07, 9.07563, -5.14364, -11.8854, -49.582, -2.90883, 2.1916)
+
 [node name="Chamber 1" type="CSGCylinder3D" parent="WorldEnvironment/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.6165, 0)
 radius = 50.0
@@ -45,10 +77,10 @@ height = 30.0
 sides = 20
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WorldEnvironment/CSGCombiner3D/Chamber 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0386, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.16018, 0)
 operation = 2
-radius = 48.0
-height = 28.0
+radius = 56.8242
+height = 36.2432
 sides = 20
 
 [node name="CSGBox3" type="CSGBox3D" parent="WorldEnvironment/CSGCombiner3D/Chamber 1"]
@@ -57,8 +89,8 @@ operation = 2
 size = Vector3(28.3546, 31.7384, 10.6959)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGCombiner3D/Chamber 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.388, -43.4611)
-size = Vector3(82.5443, 47.0947, 33.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4616, 10.4315, -43.4611)
+size = Vector3(295.118, 51.1816, 33.287)
 
 [node name="CSGBox2" type="CSGBox3D" parent="WorldEnvironment/CSGCombiner3D/Chamber 1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0574417, -27.347)
@@ -69,9 +101,9 @@ transform = Transform3D(0.992334, 0, -0.123584, 0, 1, 0, 0.123584, 0, 0.992334, 
 size = Vector3(36.2253, 30, 134.272)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGCombiner3D/Walkway 1"]
-transform = Transform3D(1, 0, -5.22137e-05, 0, 1, 0, 5.22137e-05, 0, 1, -0.374602, 2.64338, -4.05453)
+transform = Transform3D(1, 0, -5.22137e-05, 0, 1, 0, 5.22137e-05, 0, 1, -1.98011, 2.64338, -4.05463)
 operation = 2
-size = Vector3(30.6507, 29.8406, 185.153)
+size = Vector3(46.9786, 29.8406, 185.153)
 
 [node name="Chamber 2" type="CSGCylinder3D" parent="WorldEnvironment/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0661, 41.4964, 223.014)
@@ -88,7 +120,7 @@ omni_attenuation = 0.798
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WorldEnvironment/CSGCombiner3D/Chamber 2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81182, 0)
 operation = 2
-radius = 48.0
+radius = 55.3335
 height = 92.7684
 sides = 20
 
